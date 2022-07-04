@@ -4,7 +4,7 @@
 
 from random import choice
 
-questions = ["Why the water is wet?\n", "Why the Sun is so bright?\n", "Why my dog can't talk?\n"]
+questions = ["Why the water is  wet?\n", "Why the Sun is so bright?\n", "Why my dog can't talk?\n"]
 question = choice(questions)
 answer = input(question).lower().strip()
 
