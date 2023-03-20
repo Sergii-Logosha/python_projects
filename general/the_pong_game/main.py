@@ -1,5 +1,5 @@
 # 06.03.2023 Sergii Logosha sergiilogosha@gmail.com
-# Last modified 19.03.2023
+# Last modified 20.03.2023
 
 from ball import Ball
 from time import sleep
@@ -29,11 +29,19 @@ while game_is_on:
     screen.update()
     ball.move()
 
-    # Ball collides with the top wall
-    if ball.ycor() > 290:
-        ball.bounce()
+    # Ball collides with the top and bottom wall
+    if ball.ycor() > 290 or ball.ycor() < -290:
+        ball.bounce_y()
 
-    if ball.xcor() < -390 or ball.xcor() > 390:
-        game_is_on = False
+    if ball.xcor() > 380:
+        ball.reset_position()
+
+    if ball.xcor() < -380:
+        ball.reset_position()
+
+    # Ball collides with paddle
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or \
+            ball.distance(l_paddle) < 50 and ball.xcor() < - 320:
+        ball.bounce_x()
 
 screen.exitonclick()
